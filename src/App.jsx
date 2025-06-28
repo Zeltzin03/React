@@ -6,7 +6,6 @@ import Home from './pages/Home'
 import Owner from './pages/Owner'
 import Navbar from './components/Navbar'
 import { Routes, Route } from 'react-router-dom'
-
 function App() {
   return (//solo se puede retornar elementos padre, no puede retornar elementos etiquetas hijas
     <>

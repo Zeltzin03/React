@@ -1,0 +1,18 @@
+/* pelicula-style.module.css */
+.pelicula {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #efb0a9;
+  border-radius: 10px;
+  background-color: #fff5f2;
+}
+
+.pelicula img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
