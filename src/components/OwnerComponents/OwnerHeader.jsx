@@ -1,3 +1,4 @@
+//cabecera
 export default function OwnerHeader() {
   const headerStyle = {
     textAlign: "center",

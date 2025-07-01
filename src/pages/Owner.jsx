@@ -1,11 +1,12 @@
+//importar los hooks (UseState, useEffect, use Callback)
 import { useState, useEffect, useCallback } from "react";
 import OwnerHeader from "../components/OwnerComponents/OwnerHeader";
 import OwnerFooter from "../components/OwnerComponents/OwnerFooter";
 import OwnerPelicula from "../components/OwnerComponents/OwnerPelicula";
 import style from "../components/OwnerComponents/styles/pelicula-style.module.css";
 
-const peliculasIniciales = [
-  { name: "Amélie" },
+const peliculasIniciales = [//arreglo de peliculas
+  { name: "Amélie" },//solo la propiedad name
   { name: "Bridget Jones" },
   { name: "El viaje de Chihiro" },
   { name: "Como si fuera la primera vez" },
@@ -20,21 +21,23 @@ const peliculasIniciales = [
 ];
 
 export default function Owner() {
-  const [peliculas, setPeliculas] = useState(peliculasIniciales);
+  const [peliculas, setPeliculas] = useState(peliculasIniciales);//useState=maneja la lista de las peliculas. setPeliculas=actualiza el estado
 
-  useEffect(() => {
+  useEffect(() => {//obteniendo datos del LocalStorage, el dato llamado "peliculas"
     const data = localStorage.getItem("peliculas");
-    if (data) setPeliculas(JSON.parse(data));
-  }, []);
+    if (data) setPeliculas(JSON.parse(data));//convierte ese string JSON a objeto con JSON.parse y actualiza el estado peliculas.
+  }, []);//Así se mantiene persistencia entre recargas de página.
 
-  useEffect(() => {
-    localStorage.setItem("peliculas", JSON.stringify(peliculas));
-  }, [peliculas]);
+  useEffect(() => {//se ejecuta cada vez que cambia el estado peliculas 
+    localStorage.setItem("peliculas", JSON.stringify(peliculas));//Guarda el estado actualizado en localStorage
+  }, [peliculas]);//sse antiene sincronizado el almacenamiento local con la lista actual
 
-  const deletePelicula = useCallback((nombre) => {
+  //eliminar pelicula
+  const deletePelicula = useCallback((nombre) => {//useCallback: memoriza la función y evitar recrearla en cada render
     setPeliculas((prev) => prev.filter((pelicula) => pelicula.name !== nombre));
   }, []);
 
+  //estilos de contenedor principañ
   const styles = {
     container: {
       maxWidth: "600px",
@@ -91,7 +94,7 @@ export default function Owner() {
     },
   };
 
-  return (
+  return (//se renderizan el header y el footer
     <>
       <OwnerHeader />
       <div style={styles.container}>
@@ -122,10 +125,10 @@ export default function Owner() {
         <ul className={style.listaPeliculas}>
           {peliculas.map((peli) => (
             <OwnerPelicula
-              key={peli.name}
-              peliculaObject={peli}
-              onDelete={deletePelicula}
-              style={style} // pasamos el style para que OwnerPelicula pueda usarlo
+              key={peli.name}//identificar el elemento
+              peliculaObject={peli}//el objeto de la pelicula
+              onDelete={deletePelicula}//función para eliminar
+              style={style} // pasamos el style para que OwnerPelicula pueda usarlo. componente hijo
             />
           ))}
         </ul>
@@ -134,3 +137,5 @@ export default function Owner() {
     </>
   );
 }
+
+//Renderizar: Convertir un componente (que es como una función o clase que describe una parte de la UI) en elementos visuales que se muestran en pantalla.

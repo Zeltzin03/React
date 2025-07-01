@@ -1,7 +1,7 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-
+//importe los iconos de la libreria react-icons(fa)
 export default function OwnerFooter() {
-  const footerStyle = {
+  const footerStyle = {//estilos
     backgroundColor: "#ffe6db",
     padding: "20px",
     textAlign: "center",
@@ -25,12 +25,13 @@ export default function OwnerFooter() {
       <div>
         <a
           href="https://github.com/Zeltzin03"
-          target="_blank"
+          target="_blank"//se abre en pestaña nueva
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
         >
           <FaGithub style={iconStyle} />
         </a>
+      
 
         <a
           href="https://www.linkedin.com/in/zeltzin-nataly-rivero-romo-1461b21b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
